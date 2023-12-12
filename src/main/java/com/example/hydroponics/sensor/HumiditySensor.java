@@ -10,4 +10,9 @@ public class HumiditySensor implements Sensor{
     public void update() {
 
     }
+
+    @Override
+    public void execute() {
+
+    }
 }

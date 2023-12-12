@@ -10,4 +10,9 @@ public class TimeSensor implements Sensor{
     public void update() {
 
     }
+
+    @Override
+    public void execute() {
+
+    }
 }
