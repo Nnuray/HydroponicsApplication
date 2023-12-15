@@ -17,7 +17,7 @@ import java.util.Objects;
 @SpringBootApplication
 public class HydroponicsApplication {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws IOException, URISyntaxException{
         ClassLoader classLoader = HydroponicsApplication.class.getClassLoader();
         //File file = new File(Objects.requireNonNull(classLoader.getResource("serviceAccountKey.json")).getFile()); // получает ресурс из json и создает объект
         File file = new File(Objects.requireNonNull(classLoader.getResource("serviceAccountKey.json")).toURI());
@@ -37,17 +37,8 @@ public class HydroponicsApplication {
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Humidity humidity = snapshot.getValue(Humidity.class);
-                            System.out.println("Max: " + humidity.getMax());
-                            System.out.println("Min: " + humidity.getMin());
-                            System.out.println("Optional: " + humidity.getOptional());
+                    System.out.println("DataSnapshot: " + dataSnapshot);
 
-                        }
-                    } else {
-                        System.out.println("No data available for Humidity.");
-                    }
                 }
 
                 @Override
